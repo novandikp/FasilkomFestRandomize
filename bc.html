@@ -183,12 +183,20 @@
 
         function nextItem(){
             $('#contentlist').children().last().remove()
-            order++;
-            addItem(finalist[order-1]);
-            addNxtbtn();
-            if(order>9){
+            $('#contentlist').append(`<div class="col-sm-6 col-lg-4 col-xxl-3 d-flex align-items-center"><div class="spinner-border spinner-border-lg" role="status">
+  <span class="sr-only">Loading...</span>
+</div></div>`)
+
+            setTimeout(function(){
                 $('#contentlist').children().last().remove()
-            }
+                order++;
+                addItem(finalist[order-1]);
+                addNxtbtn();
+                if(order>9){
+                    $('#contentlist').children().last().remove()
+                }
+            },600)
+            
         }
         function shuffle(a) {
             for (let i = a.length - 1; i > 0; i--) {
@@ -213,7 +221,7 @@
                                                        
                                                     </div>
                                                     <div class="user-card user-card-s2">
-                                                        <div class="user-avatar md bg-primary">
+                                                        <div class="user-avatar md bg-orange">
                                                             <span>${order}</span>
                                                             
                                                         </div>
